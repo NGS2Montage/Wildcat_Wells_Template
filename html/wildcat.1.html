@@ -1,0 +1,232 @@
+<div class="modal fade bs-example-modal-lg" id="instructions">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Instructions <span id="instruction_time_limit"><span class="countdown-clock"></span></span></h2>
+      </div>
+      <div class="modal-body">
+      
+        <div id="instructions1">
+        <h2 style="text-align:center">You're Drilling for Oil!</h2>
+        <div style="text-align:center"><img src="/attachment/wwgameplay2.png" style="width:200px;"/></div>
+        <br></br>
+        <p>In a few moments, you will see a large lot of land. Under the sand, there may be oil reservoirs. 
+          Some reservoirs are deeper or wider than others. You will not know where reservoirs lie just by looking at the sand. 
+          The only way to find oil is by drilling, and you will have <b class="i_rounds">25</b> opportunities to drill. 
+          Your success in finding oil will determine your total score.</p>
+        <p>When each round begins, choose a spot for drilling by clicking somewhere on the sandy landscape. Click "drill" within <b class="i_seconds">15</b> seconds. 
+          Then, you will see the amount of oil you found. The amount is indicated by a colored square and a
+		  corresponding bar on the left side of the screen. The higher the bar, the better your performance is.</p>
+        </div> <!-- instructions1 -->
+
+        <div id="instructions2" style="display:none;">
+		<p>After you have chosen a drilling spot or <b class="i_seconds">20</b> seconds have passed, you will advance to the next round. 
+         If <b class="i_seconds">20</b> seconds have passed and you have not made a drilling decision, then you will find nothing in that round.</p>
+		<p>The only way to find oil is by drilling, and you will have <b class="i_rounds">15</b> opportunities to drill. 
+          You may drill once in each of the <b class="i_rounds">15</b> rounds.</p>
+        </div> <!-- instructions2 -->
+
+        <div id="instructions3" style="display:none;">
+		<p>This is an example of the game interface.</p>
+        <img src="/attachment/instructions1.png" />
+        </div> <!-- instructions3 -->
+
+        <div id="instructions4" style="display:none;">
+		<p>This is an example of how oil reservoirs may be laying under the sand. 
+          You can only find the location of the reservoirs by drilling. 
+          You will never see where reservoirs are unless you happen to drill into them.</p>
+        <img src="/attachment/instructions2.png" />
+        </div> <!-- instructions4 -->
+
+        <div id="instructions5" style="display:none;">
+		Please enter your first name. Your name will be visible to the other players.<br/>
+        <input type="text" id="pgs_playerName" maxlength="30" form="preGameSurvey"/>
+        </div> <!-- instructions5 -->
+
+        <div id="instructions6" style="display:none;">
+<!-- Pre Game Survey added by CR -->
+<p>Before you begin the game, please answer the following questions.</p>
+
+<form action="" id="preGameSurvey"></form>
+
+<!-- Q1 -->
+<p><span id="qq1">In this game, you're drilling for</span>
+<select id="pgs_q1" form="preGameSurvey">
+  <option value="NA">--select--</option>
+  <option value="diamonds">diamonds</option>
+  <option value="coal">coal</option>
+  <option value="oil">oil</option>
+  <option value="gold">gold</option>
+  <option value="silver">silver</option>
+</select>
+</p>
+
+
+<!-- Q2 -->
+<p><span id="qq4">How many seconds do you have to make a decision?</span>
+<select id="pgs_q4" form="preGameSurvey">
+  <option value="NA">--select--</option>
+  <option value="5">5</option>
+  <option value="10">10</option>
+  <option value="15">15</option>
+  <option value="20">20</option>
+  <option value="22.5">22.5</option>
+</select>
+</p>
+
+<!-- Q3 -->
+<p><span id="qq5">The game advances to the next round after</span><br/>
+<input type="radio" name="pgs_q5" form="preGameSurvey" value="twoFoundOil"> you move your cursor at all<br/>
+<input type="radio" name="pgs_q5" form="preGameSurvey" value="everyoneChose"> you find the maximum amount of oil<br/>
+<input type="radio" name="pgs_q5" form="preGameSurvey" value="everyoneChoseOr15"> you chose a drilling point or 20 seconds have passed<br/>
+<input type="radio" name="pgs_q5" form="preGameSurvey" value="atLeast15"> at least 10 seconds have passed<br/>
+</p>
+
+<!-- Q4 -->
+<p><span id="qq6">Which of these statements is true?</span><br/>
+<input type="radio" name="pgs_q6" form="preGameSurvey" value="locationFixed"> The location and size of oil reservoirs is fixed throughout the game.<br/>
+<input type="radio" name="pgs_q6" form="preGameSurvey" value="sizeVary"> The location of oil reservoirs is fixed but the size may change during the game.<br/>
+<input type="radio" name="pgs_q6" form="preGameSurvey" value="locationVary"> The size of oil reservoirs is fixed but the location may change during the game.<br/>
+<input type="radio" name="pgs_q6" form="preGameSurvey" value="sizeLocationVary"> The size and location of oil reservoirs may change during the game.<br/>
+<input type="radio" name="pgs_q6" form="preGameSurvey" value="sand"> The size and location of oil reservoirs can be deduced from the color of the sand.
+</p>        
+        
+        </div> <!-- instructions6 -->
+          
+      </div> <!-- modal-body -->
+      <div class="modal-footer">
+        <button id="previous" type="button" class="btn btn-default">Previous</button>
+        <button id="next" type="button" class="btn btn-primary">Next</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+
+<div id="botTimer" class="countdown" style="display:none;"></div>
+          
+<div id="wild_wrapper">
+<div id="history_wrapper"></div>
+<div id="right_side">
+  <canvas id="myCanvas" style="border:1px solid #d3d3d3;background:#ffffff;" height="512" width="512"> YourbrowserdoesnotsupporttheHTML5canvastag.</canvas>
+  <div id="canvas"></div>
+  <div id="waitForOthers" style="">Waiting...</div>
+  <div id="scores" style="display: none;">
+    <table id="scoreTable"></table><br/>
+    <div><input class="btn btn-primary" type="submit" id="nextGame" value="Waiting" disabled style="float: right;" /></div>
+  </div>
+  <table id="bottom_panels"><tr>
+    <td id="left_panel" class="bottom_panel">
+      X:<input id="x_coord" class="coord_input" type="text" value="" />
+      Y:<input id="y_coord" class="coord_input" type="text" value="" /><br/>
+      <input id="drill" type="submit" value="Drill!"/>
+    </td>
+    <td id="middle_panel" class="bottom_panel">
+      Time left:<br/>
+      <div id="timer"><span class="countdown-clock">0:30</span></div>
+      Current Round: <span id="round">1</span>    
+    </td>
+    <td id="right_panel" class="bottom_panel">
+      TOTAL: <span id="score">0</span>
+    </td>
+  </table>
+</div>
+</div>
+
+      
+        <div id="instructions1">
+
+<div class="modal fade bs-example-modal-lg" id="endGameSurveyModal">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title">Survey</h2>
+      </div>
+      <div class="modal-body">
+      
+      <!-- SCREEN ONE -->
+<form action="" id="endGameSurvey"></form>
+      <div id="endGamePage1">
+        <p>In these final questions, we are going to ask about your strategies for digging for oil.</p> 
+        <p>To what extent do you agree/disagree with the following statement: I believe I found the spot on the map with the maximum reward.</p>
+            	<select id="endGame_q1" form="endGameSurvey"">
+				  <option value="NA">--select--</option>
+                  <option value="1">1: Strongly disagree</option>
+          		  <option value="2">2: Disagree</option>
+          		  <option value="3">3: Neither agree or disagree</option>
+         		  <option value="4">4: Agree</option>
+	        	  <option value="5">5: Strongly agree</option>
+			</select>
+        <br/><br/>
+        <p>Please rate your willingness to take risks in general.</p>
+            	<select id="endGame_q3" form="endGameSurvey"">
+				  <option value="NA">--select--</option>
+                  <option value="1">1: Highly unwilling to take risks</option>
+          		  <option value="2">2: Somewhat unwilling to take risks</option>
+          		  <option value="3">3: Neither willing nor unwilling to take risks</option>
+         		  <option value="4">4: Somewhat willing to take risks</option>
+	        	  <option value="5">5: Highly willing to take risks</option>
+			</select>
+		<br/><br/>  
+      </div>	<!-- endGameSurvey - PAGE 1 -->
+          
+      <div id="endGamePage2" style="display:none;">   <!-- endGameSurvey - PAGE 2 -->
+		<p>Please rank the following three oil maps based on how much they resemble the oil map that you just drilled on.<br/>
+        <b>NOTE</b>: none of the three maps you see below are the map you have just finished drilling on, but they may resemble your map based on other features. </p>
+		<div id="imgQuestionContainer" class="row">
+        	<div id="imgQuestion1" class="col-md-4">
+          		<img src="/attachment/map1seed2.png" /><br/>
+            	<select id="endGame_rankMap1" form="endGameSurvey" onchange="mySelect(this)">
+				  <option value="NA">--select--</option>
+                  <option value="1">1: Strongly resembles oil distribution</option>
+                  <option value="2">2: Somewhat resembles oil distribution</option>
+                  <option value="3">3: Does not resemble oil distribution</option>
+				</select>
+          		<br/><br/>
+            </div>
+	        <div id="imgQuestion2" class="col-md-4">
+          		<img src="/attachment/map2seed2.png" /><br/>
+            	<select id="endGame_rankMap2" form="endGameSurvey" onchange="mySelect(this)">
+				  <option value="NA">--select--</option>
+                  <option value="1">1: Strongly resembles oil distribution</option>
+                  <option value="2">2: Somewhat resembles oil distribution</option>
+                  <option value="3">3: Does not resemble oil distribution</option>
+				</select>
+          		<br/><br/>
+            </div>
+    	    <div id="imgQuestion3" class="col-md-4">
+          		<img src="/attachment/map3seed2.png" /><br/>
+            	<select id="endGame_rankMap3" form="endGameSurvey" onchange="mySelect(this)">
+				  <option value="NA">--select--</option>
+                  <option value="1">1: Strongly resembles oil distribution</option>
+                  <option value="2">2: Somewhat resembles oil distribution</option>
+                  <option value="3">3: Does not resemble oil distribution</option>
+				</select>
+          		<br/><br/>
+            </div>
+	    </div>
+        <br/>
+        <p>Press <em>Submit</em> when you are satisfied with your ranking. Press <em>Reset all</em> if you want to reset your ranking choices.</p>              
+      </div> <!-- endGameQ1 -->
+
+          
+      </div> <!-- /.modal-body -->
+      <div class="modal-footer">
+		<button id="resetAll" type="button" class="btn btn-primary"  style="visibility:hidden" onclick="$('#endGame_rankMap1, #endGame_rankMap2, #endGame_rankMap3').val('NA');$('#endGame_rankMap1, #endGame_rankMap2, #endGame_rankMap3').children('option').attr('disabled', false)">Reset all</button>
+        <button id="endGameSubmit" type="button" class="btn btn-primary">Next</button>
+      </div>
+    </div><!-- /.modal-content -->
+  </div><!-- /.modal-dialog -->
+</div><!-- /.modal -->
+                    
+<script>
+  var awardsList;		// stores all awards
+  function initialize() {
+  	//Initialize the game by: 
+    //  read all awards of the user, and store them in awardsList
+    //  hand over to initilizeGame() as a call back: initilizeGame() will only be called once all awards are read.
+  	fetchUserHT(function(ret) {
+	  awardsList = ret;
+      initializeGame(); 
+    }, null, null, null);	// key=null, value=null, namespace=null == read all awards of the user
+  }
+</script>
